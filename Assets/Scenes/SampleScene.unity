@@ -452,6 +452,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  maxJumpPower: 20
   bounceMat: {fileID: 6200000, guid: 66ac50d40fe029b4eaf6e703d377689e, type: 2}
   normalMat: {fileID: 6200000, guid: c9723258a09322742a3bda30ee43fed3, type: 2}
   canJump: 1

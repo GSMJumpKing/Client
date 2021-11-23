@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     private Rigidbody2D rigid;
     public LayerMask groundMask;
+    public float maxJumpPower;
 
 
     public PhysicsMaterial2D bounceMat, normalMat;
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if (isGrounded  )
+        if (isGrounded)
         {
             moveInput = Input.GetAxisRaw("Horizontal");
         }
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
             jumpValue += 1f;
         }
 
-        if (jumpValue >= 20f && isGrounded)
+        if (jumpValue >= maxJumpPower && isGrounded)
         {
             float tx = moveInput * walkSpeed;
             float ty = jumpValue;
