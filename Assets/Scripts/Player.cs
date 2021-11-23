@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         if (jumpValue >= maxJumpPower && isGrounded)
         {
-            float tx = moveInput * walkSpeed;
+            float tx = moveInput * walkSpeed * 1.5f;
             float ty = jumpValue;
             rigid.velocity = new Vector2(tx, ty);
             Invoke("ResetJump", 0.2f);
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         {
             if (isGrounded)
             {
-                rigid.velocity = new Vector2(moveInput * walkSpeed, jumpValue);
+                rigid.velocity = new Vector2(moveInput * walkSpeed * 1.5f, jumpValue);
                 jumpValue = 0;
             }
             canJump = true;
