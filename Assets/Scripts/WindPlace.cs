@@ -33,15 +33,17 @@ public class WindPlace : MonoBehaviour
         float time;
         while (isPlayer)
         {
+            yield return new WaitForSeconds(2f);
 
             time = Time.time + 1;
             while (time >= Time.time)
             {
+                if (!isPlayer)
+                    break;
                 rigid.velocity = new Vector2(rigid.velocity.x - 1, rigid.velocity.y);
-                yield return new WaitForSeconds(0.1f    );
+                yield return new WaitForSeconds(0.1f);
             }
 
-            yield return new WaitForSeconds(2f);
 
 
         }

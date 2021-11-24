@@ -9,25 +9,25 @@ public class Player : MonoBehaviour
     private float moveInput;
     public bool isGrounded;
     private Rigidbody2D rigid;
+    public Animator anim;
     public LayerMask groundMask;
     public float maxJumpPower;
 
 
     public PhysicsMaterial2D bounceMat, normalMat;
+    public bool isWalk;
     public bool canJump = true;
     public float jumpValue = 0f;
     void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-
-
-
         Movement();
-
+        //animationControl();
     }
 
     private void FixedUpdate()
@@ -53,6 +53,15 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             moveInput = Input.GetAxisRaw("Horizontal");
+        }
+
+        if (moveInput != 0)
+        {
+            isWalk = true;
+        }
+        else
+        {
+            isWalk = false; 
         }
 
         if (jumpValue == 0f && isGrounded)
@@ -93,6 +102,12 @@ public class Player : MonoBehaviour
     {
         canJump = false;
         jumpValue = 0;
+    }
+
+    void animationControl()
+    {
+        anim.SetBool("Walk", isWalk);
+        anim.SetBool("isGrounded", isGrounded);
     }
     private void OnDrawGizmosSelected()
     {
