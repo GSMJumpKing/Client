@@ -13,8 +13,8 @@ public class CamController : MonoBehaviour
 
     void Update()
     {
-        int Pos = (int)Player.transform.position.y / 14;
+        int Pos = (int)Player.transform.position.y / 11;
 
-        transform.position = new Vector3(0, Pos * 14 + 7f, -10);
+        transform.position = new Vector3(0, Pos * 11 + 4.6f, -10);
     }
 }

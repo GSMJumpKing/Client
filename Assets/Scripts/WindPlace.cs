@@ -5,10 +5,21 @@ using UnityEngine;
 public class WindPlace : MonoBehaviour
 {
 
+    public enum Dir
+    {
+        Left,
+        Right,
+    }
+
+    public Dir dir;
     bool isPlayer;
     GameObject player;
+    public SpriteRenderer[] wind;
 
-
+    private void Start()
+    {
+        wind = GetComponentsInChildren<SpriteRenderer>();
+    }
     private void Update()
     {
         Debug.Log(isPlayer);
@@ -33,17 +44,39 @@ public class WindPlace : MonoBehaviour
         float time;
         while (isPlayer)
         {
+
+            foreach (var item in wind)
+            {
+                item.enabled = false;
+            }
+
             yield return new WaitForSeconds(2f);
+
 
             time = Time.time + 1;
             while (time >= Time.time)
             {
+                foreach (var item in wind)
+                {
+                    item.enabled = true;
+                }
                 if (!isPlayer)
                     break;
-                rigid.velocity = new Vector2(rigid.velocity.x - 1, rigid.velocity.y);
+
+
+                if (dir == Dir.Left)
+                {
+                    rigid.velocity = new Vector2(rigid.velocity.x - 1, rigid.velocity.y);
+                }
+                else if(dir == Dir.Right) {
+                    rigid.velocity = new Vector2(rigid.velocity.x + 1, rigid.velocity.y);
+
+                }
                 yield return new WaitForSeconds(0.1f);
+
             }
 
+            
 
 
         }
