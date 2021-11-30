@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MovingBlock : MonoBehaviour
+{
+
+    public Vector2 tarPos;
+    Vector2 originPos;
+    public float waitSec;
+    void Start()
+    {
+        originPos = transform.position;
+        tarPos = new Vector2(originPos.x + 7, originPos.y);
+        waitSec = 1f;
+        StartCoroutine(moving());
+    }
+
+    void Update()
+    {
+        
+    }
+
+    IEnumerator moving()
+    {
+
+        while (true)
+        {
+            while (Vector2.Distance(transform.position, tarPos) > 0.01f)
+            {
+                transform.position = Vector2.Lerp(transform.position, tarPos, 3 * Time.deltaTime);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(waitSec);
+
+            while (Vector2.Distance(transform.position, originPos) > 0.01f)
+            {
+                transform.position = Vector2.Lerp(transform.position, originPos, 5 * Time.deltaTime);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(waitSec);
+
+
+        }
+    }
+}

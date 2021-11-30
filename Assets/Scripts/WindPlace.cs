@@ -22,7 +22,7 @@ public class WindPlace : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(isPlayer);
+        //Debug.Log(isPlayer);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
