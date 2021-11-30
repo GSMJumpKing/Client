@@ -42,10 +42,10 @@ public class Player : MonoBehaviour
 
 
         isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y),
-            new Vector2(0.75f, 0.4f), 0f, groundMask);
+            new Vector2(0.72f, 0.4f), 0f, groundMask);
 
         isClose = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.21f),
-            new Vector2(0.75f, 0.4f), 0f, groundMask);
+            new Vector2(0.72f, 0.45f), 0f, groundMask);
 
         if (isClose)
         {
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y),
-            new Vector2(0.75f, 0.4f));
+            new Vector2(0.72f, 0.4f));
     }
 
 
