@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Android
+  m_Controller: {fileID: 9100000, guid: 931303ce5b09ed648ab11e0f6973cc0b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: accd5734d59ae83468c43e86c49fbdd2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1bf89e6004b5c4d4b8bafd402ad9b3c9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e149ce4903411164b971be7e12816e14, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3079156f5b564044a87ff0a472e15e8a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e27e152816c69954e9d2997503f38443, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1e34c1cc1d5367041ad50652cdc9052b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: dc831541ce383494b8cab87583125391, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3276a6c75c029494bb146a9c7abca2cd, type: 2}

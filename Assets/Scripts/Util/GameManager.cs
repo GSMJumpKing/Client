@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         DontDestroyOnLoad(this);
+        SceneManager.sceneLoaded += OnSceneLoaded;
         user = new RankSender();
     }
 
@@ -29,8 +30,13 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-
-    
+        
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+        UIQueue.Clear();
+    }
 
     public void SpawnCharacter(Transform pos)
     {

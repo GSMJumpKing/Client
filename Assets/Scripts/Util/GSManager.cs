@@ -40,7 +40,6 @@ public class GSManager : Singleton<GSManager>
 
     IEnumerator timerCroutine()
     {
-        Debug.Log(2);
         while (!isEnd)
         {
             yield return null;
@@ -51,8 +50,6 @@ public class GSManager : Singleton<GSManager>
             hour = (int)(time / 60 / 60 % 60);
 
             timer.text = $"{hour}:{min}:{sec}:{msec}";
-            //int endTime = (int)((((hour * 60) + min) * 10000) + sec * 100 + msec);
-            //Debug.Log(endTime);
         }
     }
 
@@ -74,7 +71,7 @@ public class GSManager : Singleton<GSManager>
             inputUI.SetActive(false);
 
             Debug.Log(GameManager.Instance.user.name + "   " + GameManager.Instance.user.score);
-            //NetworkManager.Instance.sendData();
+            NetworkManager.Instance.sendData();
             StartCoroutine(spawnButton());
         }
     }

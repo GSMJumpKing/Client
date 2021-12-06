@@ -23,13 +23,11 @@ public class NetworkManager : Singleton<NetworkManager>
 
         string userdata = JsonConvert.SerializeObject(GameManager.Instance.user);
 
-        string data = userdata;
-        yield return new WaitForSeconds(1);
-        WWWForm form = new WWWForm();
+        yield return new WaitForSeconds(0.1f);
 
-        form.AddField("userData", userdata.ToString());
+        Debug.Log(userdata);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://15.165.160.44:3000/datasave", form);  
+        UnityWebRequest www = UnityWebRequest.Post("http://192.168.125.248:8080/add-player", userdata);  
         yield return www.Send();
 
         Debug.Log(www.downloadHandler.text);
@@ -37,23 +35,22 @@ public class NetworkManager : Singleton<NetworkManager>
 
     public IEnumerator Recive()
     {
-        //UnityWebRequest www = UnityWebRequest.Get("http://192.168.64.1:8080/show-player");
-        //yield return www.Send();
+        UnityWebRequest www = UnityWebRequest.Get("http://192.168.125.248:8080/show-player");
+        yield return www.Send();
 
-        //string a = www.downloadHandler.text;
+        string a = www.downloadHandler.text;
 
 
         yield return null;
 
-        TextAsset t = Resources.Load<TextAsset>("DummyData");
+        #region 더미데이터
+        /*TextAsset t = Resources.Load<TextAsset>("DummyData");
         Debug.Log(t);
-        string a = t.text;
+        string a = t.text;*/
 
+        #endregion
         Debug.Log(a);
-        //JObject parsedObj = new JObject(); //Json Object 생성
-
-        //parsedObj = JObject.Parse(a);
-        //Debug.Log(parsedObj);
+        
         JArray jArray = new JArray();
         jArray = JArray.Parse(a);
 
