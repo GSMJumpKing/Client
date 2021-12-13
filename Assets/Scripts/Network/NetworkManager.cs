@@ -25,12 +25,10 @@ public class NetworkManager : Singleton<NetworkManager>
 
         yield return new WaitForSeconds(0.1f);
 
-        Debug.Log(userdata);
 
         UnityWebRequest www = UnityWebRequest.Post("http://192.168.125.248:8080/add-player", userdata);  
         yield return www.Send();
 
-        Debug.Log(www.downloadHandler.text);
     }
 
     public IEnumerator Recive()
@@ -49,12 +47,10 @@ public class NetworkManager : Singleton<NetworkManager>
         string a = t.text;*/
 
         #endregion
-        Debug.Log(a);
         
         JArray jArray = new JArray();
         jArray = JArray.Parse(a);
 
-        Debug.Log(jArray);
 
         userRankList.Clear();
 
@@ -68,13 +64,7 @@ public class NetworkManager : Singleton<NetworkManager>
 
             userRankList.Add(tdrank);
         }
-        Debug.Log("랭크 테이블 완료");
 
 
-        foreach (var item in userRankList)
-        {
-            Debug.Log($"{item.id}  {item.name}   {item.score}");
-
-        }
     }
 }

@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public float walkSpeed;
     private float moveInput;
     public bool isGrounded;
-    public bool isGrounded2;
     public bool isClose;
     private Rigidbody2D rigid;
     public Animator anim;

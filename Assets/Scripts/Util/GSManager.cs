@@ -58,6 +58,8 @@ public class GSManager : Singleton<GSManager>
     {
         isEnd = true;
         endPanel.SetActive(true);
+        GameManager.clearNum++;
+        GameManager.Instance.saveClearNum();
     }
 
     public void nickNameInput()
@@ -70,8 +72,8 @@ public class GSManager : Singleton<GSManager>
             
             inputUI.SetActive(false);
 
-            Debug.Log(GameManager.Instance.user.name + "   " + GameManager.Instance.user.score);
             NetworkManager.Instance.sendData();
+            GameManager.Instance.saveClearNum();
             StartCoroutine(spawnButton());
         }
     }

@@ -27,7 +27,10 @@ public class UIManager : MonoBehaviour
     }
 
 
-
+    public void gmaeQuit()
+    {
+        Application.Quit();
+    }
     IEnumerator showrank()
     {
 

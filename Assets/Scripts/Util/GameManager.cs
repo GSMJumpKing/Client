@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,12 +13,14 @@ public class GameManager : Singleton<GameManager>
 
     public static int chooseIndex;
     public RankSender user;
-
+    public static int clearNum;
     void Start()
     {
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += OnSceneLoaded;
         user = new RankSender();
+        Application.targetFrameRate = 100;
+        loadClearNum();
     }
 
     void Update()
@@ -33,8 +36,6 @@ public class GameManager : Singleton<GameManager>
         
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
         UIQueue.Clear();
     }
 
@@ -43,5 +44,16 @@ public class GameManager : Singleton<GameManager>
         Instantiate(Characters[chooseIndex],pos);
     }
 
+    public void loadClearNum()
+    {
+        string a = File.ReadAllText(Application.dataPath + "/Resources/ClearNum.txt");
+        clearNum = System.Int32.Parse(a);
+    }
+
+    public void saveClearNum()
+    {
+        File.WriteAllText(Application.dataPath +"/Resources/ClearNum.txt",clearNum.ToString());
+
+    }
     
 }
